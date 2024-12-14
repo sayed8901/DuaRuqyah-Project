@@ -11,7 +11,7 @@ import books_icon from "@/assets/books.svg";
 
 const SideIconMenu = () => {
   return (
-    <div className="hidden lg:block">
+    <div className="hidden xl:block">
       <div className="min-w-24 min-h-[92vh] bg-white rounded-3xl ml-4 my-4 px-4 py-6 flex flex-col justify-start items-center gap-20 overflow-y-auto scroll-smooth">
         <Image src={logo} alt="logo"></Image>
         <div className="flex flex-col justify-start items-center gap-6">

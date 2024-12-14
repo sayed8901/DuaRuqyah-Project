@@ -53,11 +53,11 @@ export default function DuaDetailsCard({ dua, duaRef }) {
         </div>
 
         {/* icons part */}
-        <div className="flex flex-col xl:flex-row justify-between items-center">
+        <div className="flex flex-col lg:flex-row justify-between items-center">
           {/* Audio Player */}
           <div
-            className={`flex justify-between items-center mb-4 xl:mb-0 ${
-              dua?.audio ? "visible" : "invisible"
+            className={`flex justify-between items-center mb-4 lg:mb-0 ${
+              dua?.audio ? "visible" : "hidden lg:block lg:invisible"
             }`}
           >
             {/* {console.log(dua.audio)} */}
@@ -70,7 +70,7 @@ export default function DuaDetailsCard({ dua, duaRef }) {
           </div>
 
           {/* Icons Section */}
-          <div className="flex justify-center items-center gap-4 2xl:gap-6">
+          <div className="flex justify-center items-center gap-6 xl:gap-8">
             {[
               copy_icon,
               bookmark_icon,
