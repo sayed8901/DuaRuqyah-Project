@@ -22,7 +22,7 @@ export default function DuaDetailsCard({ dua, duaRef }) {
   const tooltipTexts = ["Copy", "Bookmark", "Memorize", "Share", "Report"]; // Tooltip labels
 
   return (
-    <div ref={duaRef} className="p-6 bg-white rounded-lg mb-4">
+    <div ref={duaRef} className="p-6 bg-white rounded-lg mb-6">
       <div className="space-y-7">
         <div className="flex justify-start items-center gap-3">
           <Image src={duacard_icon} alt="duacard_icon" />
@@ -60,7 +60,11 @@ export default function DuaDetailsCard({ dua, duaRef }) {
               dua?.audio ? "flex justify-between items-center" : "invisible"
             }`}
           >
+            {console.log(dua.audio)}
             <AudioPlayer
+              // audioSrc={dua.audio}
+              // As {dua.audio} is not available, I have used demo audio here
+
               audioSrc={`https://www.soundhelix.com/examples/mp3/SoundHelix-Song-${dua.id}.mp3`}
             />
           </div>
@@ -80,6 +84,7 @@ export default function DuaDetailsCard({ dua, duaRef }) {
                 onClick={() => handleIconClick()}
               >
                 <Image src={icon} alt={`icon-${index}`} />
+
                 {/* Tooltip */}
                 <span className="absolute left-1/2 bottom-full mb-2 -translate-x-1/2 bg-black text-white text-xs font-semibold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   {tooltipTexts[index]}

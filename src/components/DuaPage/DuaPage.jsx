@@ -62,7 +62,7 @@ export default function DuaPage({ duas, categories }) {
   };
 
   return (
-    <div className="flex min-h-screen overflow-hidden">
+    <div className="flex overflow-hidden">
       {/* Sidebar */}
       <DuaCategorySidebar
         categories={categories}

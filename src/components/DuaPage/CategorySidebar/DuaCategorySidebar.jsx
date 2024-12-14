@@ -24,7 +24,7 @@ export default function DuaCategorySidebar({
   const duaRefs = useRef({});
   const sectionRef = useRef(null);
 
-  // Track if we need to scroll to the section title
+  // Track the position to scroll to the section title
   const [scrollToSection, setScrollToSection] = useState(false);
 
   useEffect(() => {
@@ -52,10 +52,6 @@ export default function DuaCategorySidebar({
     fetchDuaData();
   }, [categories]);
 
-  const filteredCategories = categories.filter((category) =>
-    category.cat_name_en.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   const handleSubCategoryClick = (subCategoryId, subCategoryName) => {
     // Update section title and trigger scroll
     setSectionTitle(subCategoryName);
@@ -79,7 +75,7 @@ export default function DuaCategorySidebar({
           behavior: "smooth",
           block: "start",
         });
-        const offset = 80; // Adjust for fixed headers
+        const offset = 80; // Adjustment for fixed headers
         window.scrollBy(0, -offset);
       }, 200); // Delay ensures the section title scroll completes
     }
@@ -110,7 +106,7 @@ export default function DuaCategorySidebar({
           behavior: "smooth",
           block: "start",
         });
-        const offset = 80; // Adjust for fixed headers
+        const offset = 80; // Adjustment for fixed headers
         window.scrollBy(0, -offset);
       }, 100); // Ensure smooth scroll effect
     }
@@ -127,9 +123,9 @@ export default function DuaCategorySidebar({
   };
 
   return (
-    // main
+    // main part
     <div className="flex">
-      <div className="w-96 h-[84vh] bg-white rounded-2xl flex flex-col">
+      <div className="w-96 h-[83vh] bg-white rounded-2xl flex flex-col">
         <h2 className="text-lg font-semibold text-center bg-primary text-white p-4 mb-2 rounded-t-2xl">
           Categories
         </h2>

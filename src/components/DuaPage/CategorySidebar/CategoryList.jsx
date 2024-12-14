@@ -19,7 +19,7 @@ const CategoryList = ({
   );
 
   return (
-    <div className="flex-1 overflow-y-auto px-4">
+    <div className="flex-1 overflow-y-auto px-4 mb-10">
       {filteredCategories.map((category) => {
         const subCategories = subCategoriesByCategory[category.id] || [];
 

@@ -6,7 +6,6 @@ import SettingsMenu from "@/components/SettingsMenu";
 import SideIconMenu from "@/components/SideIconMenu";
 import { getAllCategories, getAllDuas } from "@/utilities/dataFetch";
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
 
 export default function Home() {
   const [allDuas, setAllDuas] = useState([]);
@@ -42,9 +41,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* to use react-toastify globally across the nextJS project */}
-      <ToastContainer></ToastContainer>
     </>
   );
 }

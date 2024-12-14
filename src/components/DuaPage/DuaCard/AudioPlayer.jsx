@@ -61,7 +61,10 @@ const AudioPlayer = ({ audioSrc }) => {
   const calculateTimeFromPosition = (x) => {
     if (progressBarRef.current) {
       const progressWidth = progressBarRef.current.offsetWidth;
-      const offsetX = Math.min(Math.max(0, x), progressWidth); // Clamp the position
+
+      // To ensure the value of offsetX stays within the range 0 to progressWidth
+      const offsetX = Math.min(Math.max(0, x), progressWidth);
+
       const newTime = (offsetX / progressWidth) * duration;
       return newTime;
     }
