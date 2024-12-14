@@ -20,7 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} p-2`}>
+      <body className={`${inter.className} m-2`}>
         <ContextProvider>
           {/* main contents */}
           {children}

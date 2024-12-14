@@ -11,32 +11,34 @@ import books_icon from "@/assets/books.svg";
 
 const SideIconMenu = () => {
   return (
-    <div className="w-24 bg-white rounded-3xl h-[92vh] ml-4 px-4 py-6 flex flex-col justify-start items-center gap-20 overflow-y-auto scroll-smooth">
-      <Image src={logo} alt="logo"></Image>
-      <div className="flex flex-col justify-start items-center gap-6">
-        <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-          <Image src={home_icon} alt="home_icon"></Image>
+    <div className="hidden lg:block">
+      <div className="w-24 bg-white rounded-3xl h-[92vh] ml-4 my-4 px-4 py-6 flex flex-col justify-start items-center gap-20 overflow-y-auto scroll-smooth">
+        <Image src={logo} alt="logo"></Image>
+        <div className="flex flex-col justify-start items-center gap-6">
+          <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+            <Image src={home_icon} alt="home_icon"></Image>
+          </div>
+          <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+            <Image src={all_dua_icon} alt="all_dua_icon"></Image>
+          </div>
+          <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+            <Image src={memorize_icon} alt="memorize_icon"></Image>
+          </div>
+          <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+            <Image src={bookmark_icon} alt="bookmark_icon"></Image>
+          </div>
+          <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+            <Image src={ruqyah_icon} alt="ruqyah_icon"></Image>
+          </div>
+          <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+            <Image src={dua_info_icon} alt="dua_info_icon"></Image>
+          </div>
+          <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+            <Image src={books_icon} alt="books_icon"></Image>
+          </div>
         </div>
-        <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-          <Image src={all_dua_icon} alt="all_dua_icon"></Image>
-        </div>
-        <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-          <Image src={memorize_icon} alt="memorize_icon"></Image>
-        </div>
-        <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-          <Image src={bookmark_icon} alt="bookmark_icon"></Image>
-        </div>
-        <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-          <Image src={ruqyah_icon} alt="ruqyah_icon"></Image>
-        </div>
-        <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-          <Image src={dua_info_icon} alt="dua_info_icon"></Image>
-        </div>
-        <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-          <Image src={books_icon} alt="books_icon"></Image>
-        </div>
+        <Image src={logo} alt="logo"></Image>
       </div>
-      <Image src={logo} alt="logo"></Image>
     </div>
   );
 };

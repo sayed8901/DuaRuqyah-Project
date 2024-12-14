@@ -26,7 +26,7 @@ export default function Home() {
   // console.log(allDuas, categories);
 
   return (
-    <>
+    <div>
       <div className="flex gap-8">
         {/* Side Icon Menu on the left */}
         <SideIconMenu />
@@ -34,13 +34,16 @@ export default function Home() {
         {/* Nav Search Bar on the right */}
         <div className="flex-1">
           <NavSearchBar />
+
           <div className="flex justify-between">
             {/* dua category and dua cards */}
             <DuaPage duas={allDuas} categories={categories}></DuaPage>
+
+            {/* settings panel */}
             <SettingsMenu />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

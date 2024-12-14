@@ -7,6 +7,7 @@ import {
 
 import DuaDetailsSection from "./DuaDetailsSection";
 import CategoryList from "./CategoryList";
+import SearchCategory from "./SearchCategory";
 
 export default function DuaCategorySidebar({
   categories,
@@ -126,19 +127,22 @@ export default function DuaCategorySidebar({
     // main part
     <div className="flex">
       <div className="w-96 h-[83vh] bg-white rounded-2xl flex flex-col">
-        <h2 className="text-lg font-semibold text-center bg-primary text-white p-4 mb-2 rounded-t-2xl">
-          Categories
-        </h2>
+        <div className="text-lg font-semibold text-center bg-primary text-white p-4 mb-2 rounded-t-2xl flex justify-between items-center gap-12">
+          <h1>Categories</h1>
+          {/* search field in small screen */}
+          <div className="visible lg:hidden">
+            <SearchCategory
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          </div>
+        </div>
 
-        {/* search field */}
-        <div className="flex items-center gap-2 m-4 p-4 border rounded-lg">
-          <FaSearch className="text-gray-500" />
-          <input
-            type="text"
-            placeholder="Search by Category Name"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="bg-transparent outline-none w-full px-4"
+        {/* search field in big screen */}
+        <div className="hidden lg:block m-4">
+          <SearchCategory
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
           />
         </div>
 

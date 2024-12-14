@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { AiOutlineClose } from "react-icons/ai"; // Import close icon from react-icons
+import { AiOutlineClose } from "react-icons/ai";
 import language_icon from "@/assets/language.svg";
 import general_icon from "@/assets/general.svg";
 import font_icon from "@/assets/font.svg";
@@ -11,7 +11,7 @@ const SettingsMenu = () => {
 
   return (
     <div
-      className={`fixed top-[80px] right-0 w-80 bg-white p-4 mb-10 rounded-3xl h-[83vh] shadow-lg transition-transform duration-300 ${
+      className={`fixed top-[70px] -right-2 w-80 bg-white mx-2 p-4 mb-10 rounded-3xl h-[83vh] shadow-lg transition-transform duration-300 ${
         isSettingsOpen ? "translate-x-0" : "translate-x-full"
       } 2xl:translate-x-0 2xl:static 2xl:block`}
     >

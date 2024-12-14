@@ -53,14 +53,14 @@ export default function DuaDetailsCard({ dua, duaRef }) {
         </div>
 
         {/* icons part */}
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col xl:flex-row justify-between items-center">
           {/* Audio Player */}
           <div
-            className={`flex justify-between items-center ${
-              dua?.audio ? "flex justify-between items-center" : "invisible"
+            className={`flex justify-between items-center mb-4 xl:mb-0 ${
+              dua?.audio ? "visible" : "invisible"
             }`}
           >
-            {console.log(dua.audio)}
+            {/* {console.log(dua.audio)} */}
             <AudioPlayer
               // audioSrc={dua.audio}
               // As {dua.audio} is not available, I have used demo audio here
@@ -70,7 +70,7 @@ export default function DuaDetailsCard({ dua, duaRef }) {
           </div>
 
           {/* Icons Section */}
-          <div className="flex justify-center items-center gap-10">
+          <div className="flex justify-center items-center gap-4 2xl:gap-6">
             {[
               copy_icon,
               bookmark_icon,

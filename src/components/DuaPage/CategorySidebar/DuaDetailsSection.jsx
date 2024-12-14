@@ -8,7 +8,7 @@ export default function DuaDetailsSection({
   duaRefs,
 }) {
   return (
-    <div className="flex-1 h-[87vh] ml-2 pl-4 pr-2 rounded-2xl overflow-y-auto">
+    <div className="flex-1 ml-2 pl-4 pr-2 rounded-2xl overflow-y-auto h-[82vh] 2xl:h-[88vh]">
       {/* Display section title dynamically for the selected category */}
       {sectionTitle && (
         <div ref={sectionRef} className="p-6 bg-white rounded-lg mb-4">

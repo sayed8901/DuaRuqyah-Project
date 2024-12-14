@@ -55,7 +55,7 @@ const NavSearchBar = () => {
     <div className="flex justify-between items-center px-2">
       <div className="flex flex-grow justify-between items-center py-4">
         {/* Title */}
-        <h1 className="text-2xl font-semibold">Duas Page</h1>
+        <h1 className="text-xl xl:text-2xl font-semibold">Duas Page</h1>
 
         {/* Search Box */}
         <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
@@ -122,7 +122,6 @@ const NavSearchBar = () => {
 
       {/* Settings Icon */}
       <div className="ml-6 visible 2xl:hidden">
-        {/* Settings Icon */}
         <button onClick={toggleSettings}>
           <Image src={settings_icon} alt="settings_icon" />
         </button>

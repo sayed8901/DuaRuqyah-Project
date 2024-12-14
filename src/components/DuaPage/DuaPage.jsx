@@ -7,7 +7,6 @@ export default function DuaPage({ duas, categories }) {
   const [duasList, setDuasList] = useState(duas || []);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState(null);
-  const [selectedDuaId, setSelectedDuaId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const duaRefs = useRef({}); // Store refs for each dua card
@@ -20,6 +19,9 @@ export default function DuaPage({ duas, categories }) {
       setDuasList(duas || []);
     }
   }, [categories, duas]);
+
+  // console.log("duas:", duasList);
+  // console.log("categories:", categories);
 
   // Fetch Duas dynamically on category or subcategory change
   const fetchDuas = async (categoryId, subCategoryId = null) => {

@@ -123,7 +123,7 @@ const AudioPlayer = ({ audioSrc }) => {
       {/* Progress Bar */}
       {audioSrc &&
         isPlaying && ( // Only show progress bar when audio is playing
-          <div className="flex items-center ml-4 w-72 relative">
+          <div className="flex items-center ml-4 w-60 relative">
             <div
               ref={progressBarRef}
               className="w-full h-2 bg-gray-300 rounded cursor-pointer relative"
