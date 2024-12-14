@@ -11,7 +11,7 @@ const SettingsMenu = () => {
 
   return (
     <div
-      className={`fixed top-[70px] -right-2 w-80 bg-white mx-2 p-4 mb-10 rounded-3xl h-[83vh] shadow-lg transition-transform duration-300 ${
+      className={`fixed top-0 lg:top-[70px] -right-2 min-w-80 bg-white mx-2 p-4 mb-10 rounded-3xl min-h-[83vh] shadow-lg transition-transform duration-300 overflow-y-scroll ${
         isSettingsOpen ? "translate-x-0" : "translate-x-full"
       } 2xl:translate-x-0 2xl:static 2xl:block`}
     >
@@ -23,7 +23,7 @@ const SettingsMenu = () => {
         <AiOutlineClose size={24} /> {/* Close icon */}
       </button>
 
-      <h1 className="text-xl font-semibold text-center py-8">Settings</h1>
+      <h1 className="text-xl font-semibold text-center py-0 lg:py-8">Settings</h1>
 
       <div className="px-2">
         {/* Language Settings Part */}
@@ -36,11 +36,11 @@ const SettingsMenu = () => {
               <h2 className="text-primary font-semibold">Language Settings</h2>
             </div>
           </div>
-          <div className="flex justify-between px-4 py-6 gap-4">
-            <button className="border-2 rounded-lg w-full px-4 py-2 bg-primary text-white">
+          <div className="flex justify-between px-4 py-4 lg:py-6 gap-4">
+            <button className="border-2 rounded-lg w-full px-4 py-1 lg:py-2 bg-primary text-white">
               English
             </button>
-            <button className="border-2 rounded-lg w-full px-4 py-2">
+            <button className="border-2 rounded-lg w-full px-4 py-1 lg:py-2">
               বাংলা
             </button>
           </div>

@@ -58,15 +58,17 @@ const NavSearchBar = () => {
         <h1 className="text-xl xl:text-2xl font-semibold">Duas Page</h1>
 
         {/* Search Box */}
-        <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
+        <div className="hidden md:block">
+          <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
           <input
             type="text"
             placeholder="Search by Dua Name"
             className="bg-transparent outline-none w-full px-4"
           />
-          <div className="bg-gray-200 w-16 h-10 flex justify-center items-center rounded-lg">
+          <div className="bg-gray-200 w-16 h-8 flex justify-center items-center rounded-lg">
             <FaSearch className="text-gray-500" />
           </div>
+        </div>
         </div>
       </div>
 
