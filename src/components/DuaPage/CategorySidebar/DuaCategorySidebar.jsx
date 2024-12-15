@@ -56,35 +56,6 @@ export default function DuaCategorySidebar({
     fetchDuaData();
   }, [categories]);
 
-  const handleSubCategoryClick = (subCategoryId, subCategoryName) => {
-    // Update section title and trigger scroll
-    setSectionTitle(subCategoryName);
-    setScrollToSection(true);
-
-    // Set expanded state for the subcategory
-    setExpandedSubCategory(
-      expandedSubCategory === subCategoryId ? null : subCategoryId
-    );
-
-    // Find the first Dua in the selected subcategory
-    const categoryDuas = duasByCategory[selectedCategory] || [];
-    const firstDua = categoryDuas.find(
-      (dua) => dua.subcat_id === subCategoryId
-    );
-
-    if (firstDua && duaRefs.current[firstDua.id]) {
-      // Delay the scroll to Dua to ensure section title is updated
-      setTimeout(() => {
-        duaRefs.current[firstDua.id].scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-        const offset = 80; // Adjustment for fixed headers
-        window.scrollBy(0, -offset);
-      }, 200); // Delay ensures the section title scroll completes
-    }
-  };
-
   const handleCategoryClick = (categoryId) => {
     if (duaCounts[categoryId] === 0) return; // Prevent clicking if no duas are present
 
@@ -116,6 +87,35 @@ export default function DuaCategorySidebar({
     }
   };
 
+  const handleSubCategoryClick = (subCategoryId, subCategoryName) => {
+    // Update section title and trigger scroll
+    setSectionTitle(subCategoryName);
+    setScrollToSection(true);
+
+    // Set expanded state for the subcategory
+    setExpandedSubCategory(
+      expandedSubCategory === subCategoryId ? null : subCategoryId
+    );
+
+    // Find the first Dua in the selected subcategory
+    const categoryDuas = duasByCategory[selectedCategory] || [];
+    const firstDua = categoryDuas.find(
+      (dua) => dua.subcat_id === subCategoryId
+    );
+
+    if (firstDua && duaRefs.current[firstDua.id]) {
+      // Delay the scroll to Dua to ensure section title is updated
+      setTimeout(() => {
+        duaRefs.current[firstDua.id].scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        const offset = 80; // Adjustment for fixed headers
+        window.scrollBy(0, -offset);
+      }, 200); // Delay ensures the section title scroll completes
+    }
+  };
+
   const handleDuaClick = (duaId) => {
     setSelectedDua(duaId);
     const duaElement = duaRefs.current[duaId];
@@ -124,6 +124,9 @@ export default function DuaCategorySidebar({
       const offset = 80;
       window.scrollBy(0, -offset);
     }
+
+    // Close the sidebar overlay after clicking a Dua
+    toggleSidebar();
   };
 
   // Toggle Sidebar Visibility
@@ -138,7 +141,7 @@ export default function DuaCategorySidebar({
       <div
         className={`w-72 lg:w-96 h-full md:h-[73vh] lg:h-[80vh] xl:h-[82vh] bg-white rounded-2xl flex flex-col transition-all overflow-y-auto ${
           isSidebarOpen
-            ? "fixed inset-0 sm:hidden bg-white z-50"
+            ? "fixed inset-0 md:hidden bg-white z-50"
             : "hidden md:block"
         }`}
       >

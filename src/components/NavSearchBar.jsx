@@ -56,7 +56,7 @@ const NavSearchBar = () => {
 
   return (
     <div className="flex justify-between items-center px-2">
-      <div className="flex flex-grow justify-between items-center py-4">
+      <div className="flex flex-grow justify-between items-center py-1 md:py-4">
         <div className="w-52 sm:w-96 flex justify-between items-center">
           {/* Title */}
           <h1 className="text-xl xl:text-2xl font-semibold">Duas Page</h1>
@@ -97,7 +97,7 @@ const NavSearchBar = () => {
       </div>
 
       {/* Profile Icon with Dropdown */}
-      <div className="relative w-36 lg:w-52 xl:w-80 flex justify-end">
+      <div className="relative w-28 sm:w-36 lg:w-52 xl:w-80 flex justify-end">
         <button
           ref={buttonRef} // Attach ref to the button
           onClick={toggleDropdown} // Toggle dropdown visibility when clicked
