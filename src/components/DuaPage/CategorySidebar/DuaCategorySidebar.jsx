@@ -126,11 +126,11 @@ export default function DuaCategorySidebar({
   return (
     // main part
     <div className="flex">
-      <div className="w-96 h-[83vh] bg-white rounded-2xl flex flex-col">
-        <div className="text-lg font-semibold text-center bg-primary text-white p-4 mb-2 rounded-t-2xl flex justify-between items-center gap-12">
+      <div className="w-96 h-[73vh] lg:h-[80vh] xl:h-[82vh] bg-white rounded-2xl flex flex-col">
+        <div className="text-lg font-semibold text-center bg-primary text-white p-4 mb-2 rounded-t-2xl flex justify-between items-center gap-16">
           <h1>Categories</h1>
           {/* search field in small screen */}
-          <div className="visible lg:hidden">
+          <div className="visible xl:hidden">
             <SearchCategory
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
@@ -139,7 +139,7 @@ export default function DuaCategorySidebar({
         </div>
 
         {/* search field in big screen */}
-        <div className="hidden lg:block m-4">
+        <div className="hidden xl:block m-4">
           <SearchCategory
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}

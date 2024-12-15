@@ -73,7 +73,7 @@ const NavSearchBar = () => {
       </div>
 
       {/* Profile Icon with Dropdown */}
-      <div className="relative w-80 flex justify-end">
+      <div className="relative w-36 lg:w-52 xl:w-80 flex justify-end">
         <button
           ref={buttonRef} // Attach ref to the button
           onClick={toggleDropdown} // Toggle dropdown visibility when clicked

@@ -11,7 +11,7 @@ const SettingsMenu = () => {
 
   return (
     <div
-      className={`fixed top-0 lg:top-[70px] -right-2 min-w-80 bg-white mx-2 p-4 mb-10 rounded-3xl min-h-[83vh] shadow-lg transition-transform duration-300 overflow-y-scroll ${
+      className={`fixed top-0 md:top-[40px] lg:top-[60px] -right-2 min-w-80 bg-white mx-2 p-4 mb-10 rounded-3xl min-h-[73vh] lg:min-h-[80vh] xl:min-h-[82vh] shadow-lg transition-transform duration-300 ${
         isSettingsOpen ? "translate-x-0" : "translate-x-full"
       } 2xl:translate-x-0 2xl:static 2xl:block`}
     >
@@ -23,7 +23,9 @@ const SettingsMenu = () => {
         <AiOutlineClose size={24} /> {/* Close icon */}
       </button>
 
-      <h1 className="text-xl font-semibold text-center py-0 lg:py-8">Settings</h1>
+      <h1 className="text-xl font-semibold text-center py-0 lg:py-8">
+        Settings
+      </h1>
 
       <div className="px-2">
         {/* Language Settings Part */}
