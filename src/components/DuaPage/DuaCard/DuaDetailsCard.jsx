@@ -53,11 +53,15 @@ export default function DuaDetailsCard({ dua, duaRef }) {
         </div>
 
         {/* icons part */}
-        <div className="flex flex-col lg:flex-row justify-between items-center">
+        <div
+          className={`flex flex-col sm:flex-row ${
+            dua?.audio ? "justify-between" : "justify-end"
+          } items-center`}
+        >
           {/* Audio Player */}
           <div
-            className={`flex justify-between items-center mb-4 lg:mb-0 ${
-              dua?.audio ? "visible" : "hidden lg:block lg:invisible"
+            className={`flex justify-between items-center mb-4 sm:mb-0 ${
+              dua?.audio ? "visible" : "hidden"
             }`}
           >
             {/* {console.log(dua.audio)} */}

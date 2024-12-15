@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
-import { FaSearch } from "react-icons/fa";
+
+import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import profile_icon from "@/assets/profile.svg";
 import support_icon from "@/assets/support.svg";
@@ -17,14 +18,15 @@ import settings_icon from "@/assets/settings.svg";
 import { useAppContext } from "@/contexts/ContextProvider";
 
 const NavSearchBar = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { toggleSettings, isSidebarOpen, setSidebarOpen } = useAppContext();
 
-  const { toggleSettings } = useAppContext();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
 
-  // Close dropdown if clicked outside
+  // Close the settings dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       // Close dropdown if clicked outside the dropdown or click the button
@@ -47,6 +49,7 @@ const NavSearchBar = () => {
     };
   }, []);
 
+  // Toggle Sidebar for small screen (hamburger menu)
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev); // Toggle dropdown visibility
   };
@@ -54,21 +57,42 @@ const NavSearchBar = () => {
   return (
     <div className="flex justify-between items-center px-2">
       <div className="flex flex-grow justify-between items-center py-4">
-        {/* Title */}
-        <h1 className="text-xl xl:text-2xl font-semibold">Duas Page</h1>
+        <div className="w-52 sm:w-96 flex justify-between items-center">
+          {/* Title */}
+          <h1 className="text-xl xl:text-2xl font-semibold">Duas Page</h1>
+
+          <button
+            className="mx-4 px-2 py-1 visible md:hidden"
+            onClick={() => setSidebarOpen(!isSidebarOpen)}
+          >
+            {isSidebarOpen ? (
+              <div className="flex items-center border-2 border-primary rounded-lg p-1 gap-2">
+                <p className="text-sm">Hide Categories</p>
+                {/* // Close icon */}
+                <FaTimes className="text-2xl text-gray-600" />
+              </div>
+            ) : (
+              <div className="flex items-center border-2 border-primary rounded-lg p-1 gap-2">
+                <p className="text-sm">Show Categories</p>
+                {/* // Hamburger icon */}
+                <FaBars className="text-2xl text-gray-600" />
+              </div>
+            )}
+          </button>
+        </div>
 
         {/* Search Box */}
         <div className="hidden md:block">
           <div className="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
-          <input
-            type="text"
-            placeholder="Search by Dua Name"
-            className="bg-transparent outline-none w-full px-4"
-          />
-          <div className="bg-gray-200 w-16 h-8 flex justify-center items-center rounded-lg">
-            <FaSearch className="text-gray-500" />
+            <input
+              type="text"
+              placeholder="Search by Dua Name"
+              className="bg-transparent outline-none w-full px-4"
+            />
+            <div className="bg-gray-200 w-16 h-8 flex justify-center items-center rounded-lg">
+              <FaSearch className="text-gray-500" />
+            </div>
           </div>
-        </div>
         </div>
       </div>
 

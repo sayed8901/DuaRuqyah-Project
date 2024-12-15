@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { FaSearch } from "react-icons/fa";
 import {
   getAllDuasByCategoryID,
   getAllSubCategoriesByCategoryID,
@@ -8,6 +7,7 @@ import {
 import DuaDetailsSection from "./DuaDetailsSection";
 import CategoryList from "./CategoryList";
 import SearchCategory from "./SearchCategory";
+import { useAppContext } from "@/contexts/ContextProvider";
 
 export default function DuaCategorySidebar({
   categories,
@@ -24,6 +24,9 @@ export default function DuaCategorySidebar({
   const [sectionTitle, setSectionTitle] = useState("");
   const duaRefs = useRef({});
   const sectionRef = useRef(null);
+
+  // Access sidebar state from the context
+  const { isSidebarOpen, setSidebarOpen } = useAppContext();
 
   // Track the position to scroll to the section title
   const [scrollToSection, setScrollToSection] = useState(false);
@@ -123,27 +126,43 @@ export default function DuaCategorySidebar({
     }
   };
 
+  // Toggle Sidebar Visibility
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     // main part
     <div className="flex">
-      <div className="w-96 h-[73vh] lg:h-[80vh] xl:h-[82vh] bg-white rounded-2xl flex flex-col">
-        <div className="text-lg font-semibold text-center bg-primary text-white p-4 mb-2 rounded-t-2xl flex justify-between items-center gap-16">
-          <h1>Categories</h1>
-          {/* search field in small screen */}
-          <div className="visible xl:hidden">
+      {/* Sidebar component that can toggle visibility */}
+      <div
+        className={`w-72 lg:w-96 h-full md:h-[73vh] lg:h-[80vh] xl:h-[82vh] bg-white rounded-2xl flex flex-col transition-all overflow-y-auto ${
+          isSidebarOpen
+            ? "fixed inset-0 sm:hidden bg-white z-50"
+            : "hidden md:block"
+        }`}
+      >
+        {/* Fixed Header */}
+        <div className="sticky top-0 bg-white z-10 xl:pb-1">
+          <div className="text-lg font-semibold text-center bg-primary text-white p-4 mb-2 rounded-t-2xl flex justify-between items-center gap-4 sm:gap-16">
+            <h1 className="text-center">Categories</h1>
+
+            {/* search field in small screen */}
+            <div className="visible xl:hidden">
+              <SearchCategory
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+              />
+            </div>
+          </div>
+
+          {/* search field in big screen */}
+          <div className="hidden xl:block m-4">
             <SearchCategory
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
             />
           </div>
-        </div>
-
-        {/* search field in big screen */}
-        <div className="hidden xl:block m-4">
-          <SearchCategory
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-          />
         </div>
 
         {/* CategoryList component */}
@@ -162,6 +181,14 @@ export default function DuaCategorySidebar({
           handleDuaClick={handleDuaClick}
         />
       </div>
+
+      {/* Overlay for small screen */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black opacity-50 z-40"
+          onClick={toggleSidebar}
+        ></div>
+      )}
 
       {/* DuaDetailsSection component */}
       <DuaDetailsSection
