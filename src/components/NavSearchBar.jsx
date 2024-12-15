@@ -112,36 +112,54 @@ const NavSearchBar = () => {
         {isDropdownOpen && (
           <div
             ref={dropdownRef} // Attach the ref to the dropdown
-            className="absolute right-0 mt-12 w-72 bg-white border rounded-3xl z-10"
+            className="absolute right-0 mt-10 w-[300px] bg-white border rounded-3xl z-10"
           >
-            <ul className="px-8 py-4">
+            <ul className="px-3 py-8">
               <li className="px-4 py-2 hover:bg-gray-100 hover:rounded-2xl cursor-pointer flex justify-start items-center gap-4">
                 <Image src={support_icon} alt="support_icon" />
-                <p>Support Us</p>
+                <p>{language === "english" ? "Support Us" : "সাপোর্ট করুন"}</p>
               </li>
               <li className="px-4 py-2 hover:bg-gray-100 hover:rounded-2xl cursor-pointer flex justify-start items-center gap-4">
                 <Image src={download_icon} alt="download_icon" />
-                <p>Download the App</p>
+                <p>
+                  {language === "english"
+                    ? "Download the App"
+                    : "দোয়া অ্যাপ ডাউনলোড করুন"}
+                </p>
               </li>
               <li className="px-4 py-2 hover:bg-gray-100 hover:rounded-2xl cursor-pointer flex justify-start items-center gap-4">
                 <Image src={privacy_icon} alt="privacy_icon" />
-                <p>Privacy Policy</p>
+                <p>
+                  {language === "english"
+                    ? "Privacy Policy"
+                    : "প্রাইভেসি পলিসি"}
+                </p>
               </li>
               <li className="px-4 py-2 hover:bg-gray-100 hover:rounded-2xl cursor-pointer flex justify-start items-center gap-4">
                 <Image src={credit_icon} alt="credit_icon" />
-                <p>Thanks & Credits</p>
+                <p>
+                  {language === "english" ? "Thanks & Credits" : "কৃতজ্ঞতা"}
+                </p>
               </li>
               <li className="px-4 py-2 hover:bg-gray-100 hover:rounded-2xl cursor-pointer flex justify-start items-center gap-4">
                 <Image src={about_icon} alt="about_icon" />
-                <p>About Us</p>
+                <p>{language === "english" ? "About Us" : "আমাদের সম্পর্কে"}</p>
               </li>
               <li className="px-4 py-2 hover:bg-gray-100 hover:rounded-2xl cursor-pointer flex justify-start items-center gap-4">
                 <Image src={copyright_icon} alt="copyright_icon" />
-                <p>Copyright Warning</p>
+                <p>
+                  {language === "english"
+                    ? "Copyright Warning"
+                    : "কপিরাইট সতর্কতা"}
+                </p>
               </li>
               <li className="px-4 py-2 hover:bg-gray-100 hover:rounded-2xl cursor-pointer flex justify-start items-center gap-4">
                 <Image src={projects_icon} alt="projects_icon" />
-                <p>Our Other Projects</p>
+                <p>
+                  {language === "english"
+                    ? "Our Other Projects"
+                    : "আমাদের অন্যান্য প্রজেক্টস"}
+                </p>
               </li>
             </ul>
           </div>
