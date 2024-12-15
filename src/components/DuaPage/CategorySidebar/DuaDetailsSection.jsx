@@ -1,3 +1,4 @@
+import { useAppContext } from "@/contexts/ContextProvider";
 import DuaDetailsCard from "../DuaCard/DuaDetailsCard";
 
 export default function DuaDetailsSection({
@@ -7,13 +8,16 @@ export default function DuaDetailsSection({
   duasByCategory,
   duaRefs,
 }) {
+  const { language } = useAppContext();
+
   return (
     <div className="flex-1 ml-2 pl-4 pr-2 rounded-2xl overflow-y-auto h-[81vh] md:h-[77vh] lg:h-[80vh] xl:h-[84vh] 2xl:h-[89vh]">
       {/* Display section title dynamically for the selected category */}
       {sectionTitle && (
         <div ref={sectionRef} className="p-6 bg-white rounded-lg mb-4">
           <h2>
-            <span className="text-primary font-semibold">Section: </span>{" "}
+            <span className="text-primary font-semibold"></span>
+            {language === "english" ? "Section: " : "পরিচ্ছেদঃ "}
             {sectionTitle}
           </h2>
         </div>

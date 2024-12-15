@@ -10,10 +10,19 @@ import report_icon from "@/assets/report.svg";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AudioPlayer from "./AudioPlayer";
+import { useAppContext } from "@/contexts/ContextProvider";
 
 export default function DuaDetailsCard({ dua, duaRef }) {
+  const { language } = useAppContext();
+
   const handleIconClick = () => {
-    toast.success("Coming Soon In Sha Allah", {
+    // To change message based on language
+    const successMessage =
+      language === "english"
+        ? "Coming Soon In Sha Allah"
+        : "ইনশাআল্লাহ শীঘ্রই আসবে";
+
+    toast.success(successMessage, {
       position: "bottom-center",
       className: "bg-black", // Tailwind class
     });
@@ -27,29 +36,48 @@ export default function DuaDetailsCard({ dua, duaRef }) {
         <div className="flex justify-start items-center gap-3">
           <Image src={duacard_icon} alt="duacard_icon" />
           <h2 className="text-lg font-semibold text-primary">
-            {dua?.dua_id}. {dua?.dua_name_en}
+            {dua?.dua_id}.{" "}
+            {language === "english"
+              ? dua?.dua_name_en || "Unnamed"
+              : dua?.dua_name_bn || "নামবিহীন দুয়া"}
           </h2>
         </div>
-        <p className="text-justify">{dua?.top_en}</p>
+        <p className="text-justify">
+          {language === "english" ? dua?.top_en : dua?.top_bn}
+        </p>
 
         {/* dua arabic */}
         <p className="text-3xl leading-loose text-right">{dua?.dua_indopak}</p>
 
         {dua?.transliteration_en && (
           <p className="text-justify italic">
-            <span className="font-semibold">Transliteration:</span>{" "}
-            {dua?.transliteration_en}
+            <span className="font-semibold">
+              {language === "english" ? "Transliteration: " : "উচ্চারণঃ "}
+            </span>
+            {language === "english"
+              ? dua?.transliteration_en
+              : dua?.transliteration_bn}
           </p>
         )}
 
         {dua?.translation_en && (
-          <p className="text-justify">Translation: {dua?.translation_en}</p>
+          <p className="text-justify">
+            {language === "english"
+              ? `Translation: ${dua?.translation_en}`
+              : `অনুবাদ: ${dua?.translation_bn}`}
+          </p>
         )}
-        <p className="text-justify font-medium">{dua?.bottom_en}</p>
+        <p className="text-justify font-medium">
+          {language === "english" ? dua?.bottom_en : dua?.bottom_bn}
+        </p>
 
         <div>
-          <h3 className="text-lg font-semibold text-primary">Reference:</h3>
-          <p>{dua?.refference_en}</p>
+          <h3 className="text-lg font-semibold text-primary">
+            {language === "english" ? "Reference" : "রেফারেন্স"}
+          </h3>
+          <p>
+            {language === "english" ? dua?.refference_en : dua?.refference_bn}
+          </p>
         </div>
 
         {/* icons part */}
@@ -65,6 +93,7 @@ export default function DuaDetailsCard({ dua, duaRef }) {
             }`}
           >
             {/* {console.log(dua.audio)} */}
+
             <AudioPlayer
               // audioSrc={dua.audio}
               // As {dua.audio} is not available, I have used demo audio here

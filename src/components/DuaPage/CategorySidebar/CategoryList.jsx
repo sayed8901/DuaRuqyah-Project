@@ -1,3 +1,4 @@
+import { useAppContext } from "@/contexts/ContextProvider";
 import React from "react";
 
 const CategoryList = ({
@@ -14,6 +15,8 @@ const CategoryList = ({
   selectedDua,
   handleDuaClick,
 }) => {
+  const { language } = useAppContext();
+
   const filteredCategories = categories.filter((category) =>
     category.cat_name_en.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -47,15 +50,22 @@ const CategoryList = ({
                       selectedCategory === category.id && "text-primary"
                     }`}
                   >
-                    {category.cat_name_en}
+                    {language === "english"
+                      ? category.cat_name_en
+                      : category.cat_name_bn}
                   </h1>
                   <p className="text-sm">
-                    Subcategory: {subCategories.length || 0}
+                    {language === "english"
+                      ? "Subcategory: "
+                      : "সাবক্যাটাগরিঃ "}
+                    {subCategories.length || 0}
                   </p>
                 </div>
                 <div className="text-center">
                   <h3>{duaCounts[category.id] || "No"}</h3>
-                  <p className="text-sm">Duas</p>
+                  <p className="text-sm">
+                    {language === "english" ? "Duas" : "দোয়া"}
+                  </p>
                 </div>
               </div>
             </div>
@@ -77,7 +87,9 @@ const CategoryList = ({
                         )
                       }
                     >
-                      {subCategory.subcat_name_en}
+                      {language === "english"
+                        ? subCategory.subcat_name_en
+                        : subCategory.subcat_name_bn}
                     </div>
 
                     {expandedSubCategory === subCategory.id &&
@@ -91,7 +103,9 @@ const CategoryList = ({
                             }`}
                             onClick={() => handleDuaClick(dua.id)}
                           >
-                            {dua.dua_name_en}
+                            {language === "english"
+                              ? dua.dua_name_en
+                              : dua.dua_name_bn}
                           </div>
                         ))}
 

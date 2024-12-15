@@ -18,7 +18,7 @@ import settings_icon from "@/assets/settings.svg";
 import { useAppContext } from "@/contexts/ContextProvider";
 
 const NavSearchBar = () => {
-  const { toggleSettings, isSidebarOpen, setSidebarOpen } = useAppContext();
+  const { toggleSettings, language, isSidebarOpen, setSidebarOpen } = useAppContext();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,7 +59,9 @@ const NavSearchBar = () => {
       <div className="flex flex-grow justify-between items-center py-1 md:py-4">
         <div className="w-52 sm:w-96 flex justify-between items-center">
           {/* Title */}
-          <h1 className="text-xl xl:text-2xl font-semibold">Duas Page</h1>
+          <h1 className="text-xl xl:text-2xl font-semibold">
+            {language === "english" ? "Duas Page" : "দুয়া পেজ"}
+          </h1>
 
           <button
             className="mx-4 px-2 py-1 visible md:hidden"

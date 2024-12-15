@@ -9,6 +9,7 @@ const AppContext = createContext();
 export const ContextProvider = ({ children }) => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [language, setLanguage] = useState("english"); // Default language is English
 
   const toggleSettings = () => {
     setIsSettingsOpen((prev) => !prev);
@@ -18,9 +19,22 @@ export const ContextProvider = ({ children }) => {
     setIsSidebarOpen(value);
   };
 
+  // Toggle language between English and Bangla
+  const toggleLanguage = (lang) => {
+    setLanguage(lang);
+  };
+
+
   return (
     <AppContext.Provider
-      value={{ isSettingsOpen, toggleSettings, isSidebarOpen, setSidebarOpen }}
+      value={{
+        isSettingsOpen,
+        toggleSettings,
+        isSidebarOpen,
+        setSidebarOpen,
+        language,
+        toggleLanguage,
+      }}
     >
       {children}
     </AppContext.Provider>

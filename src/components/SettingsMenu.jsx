@@ -7,7 +7,7 @@ import font_icon from "@/assets/font.svg";
 import { useAppContext } from "@/contexts/ContextProvider";
 
 const SettingsMenu = () => {
-  const { isSettingsOpen, toggleSettings } = useAppContext();
+  const { isSettingsOpen, toggleSettings, toggleLanguage, language } = useAppContext();
 
   return (
     <div
@@ -24,7 +24,7 @@ const SettingsMenu = () => {
       </button>
 
       <h1 className="text-xl font-semibold text-center py-0 lg:py-8">
-        Settings
+        {language === "english" ? "Settings" : "সেটিংস"}
       </h1>
 
       <div className="px-2">
@@ -35,14 +35,28 @@ const SettingsMenu = () => {
               <div className="bg-gray-200 w-10 h-10 flex justify-center items-center rounded-full">
                 <Image src={language_icon} alt="language_icon" />
               </div>
-              <h2 className="text-primary font-semibold">Language Settings</h2>
+              <h2 className="text-primary font-semibold">
+                {language === "english" ? "Language Settings" : "ভাষা সেটিংস"}
+              </h2>
             </div>
           </div>
+
+          {/* interactive language changes btn */}
           <div className="flex justify-between px-4 py-4 lg:py-6 gap-4">
-            <button className="border-2 rounded-lg w-full px-4 py-1 lg:py-2 bg-primary text-white">
+            <button
+              className={`border-2 rounded-lg w-full px-4 py-1 lg:py-2 ${
+                language === "english" ? "bg-primary text-white" : ""
+              }`}
+              onClick={() => toggleLanguage("english")} // Toggle to English
+            >
               English
             </button>
-            <button className="border-2 rounded-lg w-full px-4 py-1 lg:py-2">
+            <button
+              className={`border-2 rounded-lg w-full px-4 py-1 lg:py-2 ${
+                language === "bangla" ? "bg-primary text-white" : ""
+              }`}
+              onClick={() => toggleLanguage("bangla")} // Toggle to Bangla
+            >
               বাংলা
             </button>
           </div>
@@ -54,7 +68,9 @@ const SettingsMenu = () => {
             <div className="bg-gray-200 w-10 h-10 flex justify-center items-center rounded-full">
               <Image src={general_icon} alt="general_icon" />
             </div>
-            <h2>General Settings</h2>
+            <h2>
+              {language === "english" ? "General Settings" : "সাধারণ সেটিংস"}
+            </h2>
           </div>
         </div>
 
@@ -64,7 +80,7 @@ const SettingsMenu = () => {
             <div className="bg-gray-200 w-10 h-10 flex justify-center items-center rounded-full">
               <Image src={font_icon} alt="font_icon" />
             </div>
-            <h2>Font Settings</h2>
+            <h2>{language === "english" ? "Font Settings" : "ফন্ট সেটিংস"}</h2>
           </div>
         </div>
 
@@ -74,7 +90,9 @@ const SettingsMenu = () => {
             <div className="bg-gray-200 w-10 h-10 flex justify-center items-center rounded-full">
               <Image src={font_icon} alt="font_icon" />
             </div>
-            <h2>Appearance Settings</h2>
+            <h2>
+              {language === "english" ? "Appearance Settings" : "থিম সেটিংস"}
+            </h2>
           </div>
         </div>
       </div>
