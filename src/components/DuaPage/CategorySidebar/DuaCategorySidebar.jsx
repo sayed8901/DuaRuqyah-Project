@@ -124,9 +124,6 @@ export default function DuaCategorySidebar({
       const offset = 80;
       window.scrollBy(0, -offset);
     }
-
-    // // Close the sidebar overlay after clicking a Dua
-    // toggleSidebar();
   };
 
   // Toggle Sidebar Visibility

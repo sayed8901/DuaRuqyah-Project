@@ -60,7 +60,7 @@ const NavSearchBar = () => {
         <div className="w-52 sm:w-96 flex justify-between items-center">
           {/* Title */}
           <h1 className="text-xl xl:text-2xl font-semibold">
-            {language === "english" ? "Duas Page" : "দুয়া পেজ"}
+            {language === "english" ? "Duas Page" : "দোয়া পেজ"}
           </h1>
 
           <button
