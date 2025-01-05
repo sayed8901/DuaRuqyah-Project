@@ -25,7 +25,7 @@ export default function DuaDetailsCardSkeleton() {
         </div>
 
         {/* Icons Skeleton */}
-        <div className="flex justify-between items-center gap-52">
+        <div className="flex justify-between items-center gap-10 sm:gap-52 md:gap-28 lg:gap-32 xl:gap-52 2xl:gap-64">
           <div className="flex items-center">
             <Skeleton circle={true} height={40} width={40} />
           </div>

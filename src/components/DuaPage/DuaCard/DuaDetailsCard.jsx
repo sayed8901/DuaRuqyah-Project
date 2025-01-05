@@ -38,8 +38,8 @@ export default function DuaDetailsCard({ dua, duaRef }) {
           <h2 className="text-lg font-semibold text-primary">
             {dua?.dua_id}.{" "}
             {language === "english"
-              ? dua?.dua_name_en || "Unnamed"
-              : dua?.dua_name_bn || "নামবিহীন দুয়া"}
+              ? dua?.dua_name_en || "Anonymous Dua"
+              : dua?.dua_name_bn || "নামবিহীন দোয়া"}
           </h2>
         </div>
         <p className="text-justify">

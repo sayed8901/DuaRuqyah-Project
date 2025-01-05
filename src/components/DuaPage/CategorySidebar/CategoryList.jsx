@@ -5,6 +5,8 @@ import React, { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
+import duaarrow_icon from "@/assets/duaarrow.svg";
+
 const CategoryList = ({
   categories,
   selectedCategory,
@@ -31,12 +33,13 @@ const CategoryList = ({
     }
   }, [categories]);
 
+  // filtering out the categories based on searched "category name"
   const filteredCategories = categories.filter((category) =>
     category.cat_name_en.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div className="flex-1 px-4 mb-10 h-[78%] overflow-y-auto">
+    <div className="flex-1 px-4 mb-10 h-[75%] sm:h-[70%] md:h-[75%] lg:h-[80%] xl:h-[76%] overflow-y-auto">
       {isLoading
         ? // Show skeleton loading while data is loading
           Array.from({ length: 10 }).map((_, index) => {
@@ -44,7 +47,7 @@ const CategoryList = ({
               <div key={index} className="mb-4 flex items-center gap-4">
                 <Skeleton className="rounded-3xl" height={60} width={60} />
                 <div className="flex flex-col gap-2">
-                  <Skeleton className="rounded-3xl" height={20} width={200} />
+                  <Skeleton className="rounded-3xl" height={20} width={180} />
                   <Skeleton className="rounded-3xl" height={10} width={150} />
                 </div>
               </div>
@@ -101,11 +104,11 @@ const CategoryList = ({
 
                 {expandedCategory === category.id &&
                   subCategories.length > 0 && (
-                    <div className="ml-6 mt-2">
+                    <div className="ml-6 mt-2 subcategory-container">
                       {subCategories.map((subCategory) => (
-                        <div key={subCategory.id}>
+                        <div key={subCategory.id} className="subcategory-item">
                           <div
-                            className={`p-1 my-1 cursor-pointer hover:bg-gray-200 rounded-lg ${
+                            className={`ml-1 p-1 my-1 cursor-pointer hover:bg-gray-200 rounded-lg ${
                               expandedSubCategory === subCategory.id
                                 ? "text-primary"
                                 : ""
@@ -128,14 +131,28 @@ const CategoryList = ({
                               .map((dua, index) => (
                                 <div
                                   key={index}
-                                  className={`ml-6 p-1 my-1 cursor-pointer hover:bg-gray-200 rounded-lg ${
+                                  className={`ml-2 p-1 my-1 cursor-pointer hover:bg-gray-200 rounded-lg ${
                                     selectedDua === dua.id ? "text-primary" : ""
                                   }`}
                                   onClick={() => handleDuaClick(dua.id)}
                                 >
-                                  {language === "english"
-                                    ? dua.dua_name_en
-                                    : dua.dua_name_bn}
+                                  {language === "english" ? (
+                                    <div className="flex items-center gap-2">
+                                      <Image
+                                        src={duaarrow_icon}
+                                        alt="duaarrow"
+                                      />
+                                      <p>{dua.dua_name_en ? dua.dua_name_en : "Anonymous Dua"}</p>
+                                    </div>
+                                  ) : (
+                                    <div className="flex items-center gap-2">
+                                      <Image
+                                        src={duaarrow_icon}
+                                        alt="duaarrow"
+                                      />
+                                      <p>{dua.dua_name_bn ? dua.dua_name_bn : "নামবিহীন দোয়া"}</p>
+                                    </div>
+                                  )}
                                 </div>
                               ))}
 

@@ -149,7 +149,7 @@ export default function DuaCategorySidebar({
         }`}
       >
         {/* Fixed Header */}
-        <div className="sticky top-0 bg-white z-10 xl:pb-1">
+        <div className="sticky top-0 bg-white z-10 xl:pb-1 rounded-3xl">
           <div className="text-lg font-semibold text-center bg-primary text-white p-4 mb-2 rounded-t-2xl flex justify-between items-center gap-4 sm:gap-16">
             <h1 className="text-center flex-1">
               {language === "english" ? "Categories" : "ক্যাটাগরি"}
