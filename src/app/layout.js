@@ -12,9 +12,10 @@ const roboto = Roboto({
   weight: ["300", "500", "700", "900"],
 });
 
+// title
 export const metadata = {
-  title: "Dua Ruqyah",
-  description: "Dua & Ruqyah || All Duas Collection",
+  title: "Dua & Ruqyah || All Duas Collection",
+  description: "Dua & Ruqyah App",
 };
 
 export default function RootLayout({ children }) {
