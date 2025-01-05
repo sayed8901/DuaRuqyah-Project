@@ -31,8 +31,12 @@ export default function DuaCategorySidebar({
   // Track the position to scroll to the section title
   const [scrollToSection, setScrollToSection] = useState(false);
 
+  // to track the loading state
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchDuaData = async () => {
+      setIsLoading(true);
       const counts = {};
       const duasData = {};
       const subCategoriesData = {};
@@ -51,6 +55,8 @@ export default function DuaCategorySidebar({
       setDuaCounts(counts);
       setDuasByCategory(duasData);
       setSubCategoriesByCategory(subCategoriesData);
+
+      setIsLoading(false);
     };
 
     fetchDuaData();
@@ -136,7 +142,7 @@ export default function DuaCategorySidebar({
     <div className="flex">
       {/* Sidebar component that can toggle visibility */}
       <div
-        className={`w-72 lg:w-96 h-full md:h-[73vh] lg:h-[80vh] xl:h-[82vh] bg-white rounded-2xl flex flex-col transition-all overflow-y-auto ${
+        className={`w-72 lg:w-96 h-full md:h-[73vh] lg:h-[80vh] xl:h-[82vh] bg-white rounded-2xl flex flex-col transition-all ${
           isSidebarOpen
             ? "fixed inset-0 md:hidden bg-white z-50"
             : "hidden md:block"
@@ -199,6 +205,7 @@ export default function DuaCategorySidebar({
         selectedCategory={selectedCategory}
         duasByCategory={duasByCategory}
         duaRefs={duaRefs}
+        isLoading={isLoading}
       ></DuaDetailsSection>
     </div>
   );

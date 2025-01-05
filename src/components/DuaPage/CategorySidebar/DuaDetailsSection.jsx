@@ -1,5 +1,6 @@
 import { useAppContext } from "@/contexts/ContextProvider";
 import DuaDetailsCard from "../DuaCard/DuaDetailsCard";
+import DuaDetailsCardSkeleton from "../DuaCard/DuaDetailsCardSkeleton";
 
 export default function DuaDetailsSection({
   sectionTitle,
@@ -7,6 +8,7 @@ export default function DuaDetailsSection({
   selectedCategory,
   duasByCategory,
   duaRefs,
+  isLoading,
 }) {
   const { language } = useAppContext();
 
@@ -23,28 +25,24 @@ export default function DuaDetailsSection({
         </div>
       )}
 
-      {/* Check if there are duas for the selected category */}
-      {selectedCategory && Array.isArray(duasByCategory[selectedCategory]) ? (
-        duasByCategory[selectedCategory].length > 0 ? (
-          duasByCategory[selectedCategory].map((dua, index) => (
-            <DuaDetailsCard
-              key={index}
-              dua={dua}
-              duaRef={(el) => (duaRefs.current[dua.id] = el)}
-            />
-          ))
-        ) : (
-          <p className="text-center text-gray-500 mt-4">
-            No Duas found for this category.
-          </p>
-        )
-      ) : (
-        <div className="w-full h-[80vh] flex justify-center items-center">
-          <p className="text-center text-gray-500 text-lg font-semibold border p-4 rounded-md bg-gray-50">
-            There is no dua in this category right now. Please select a
-            different category to view other Duas.
-          </p>
+      {/* Show loading skeleton until data is loaded */}
+      {isLoading ||
+      !selectedCategory ||
+      !Array.isArray(duasByCategory[selectedCategory]) ? (
+        // Always show skeleton during loading or if data isn't ready
+        <div>
+          <DuaDetailsCardSkeleton />
+          <DuaDetailsCardSkeleton />
         </div>
+      ) : (
+        // Render the duas once data is ready
+        duasByCategory[selectedCategory].map((dua, index) => (
+          <DuaDetailsCard
+            key={index}
+            dua={dua}
+            duaRef={(el) => (duaRefs.current[dua.id] = el)}
+          />
+        ))
       )}
     </div>
   );
