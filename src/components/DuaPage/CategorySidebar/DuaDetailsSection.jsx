@@ -18,24 +18,31 @@ export default function DuaDetailsSection({
       {sectionTitle && (
         <div ref={sectionRef} className="p-6 bg-white rounded-lg mb-4">
           <h2>
-            <span className="text-primary font-semibold"></span>
-            {language === "english" ? "Section: " : "পরিচ্ছেদঃ "}
+            <span className="text-primary font-semibold">
+              {language === "english" ? "Section: " : "পরিচ্ছেদঃ "}
+            </span>
             {sectionTitle}
           </h2>
         </div>
       )}
 
       {/* Show loading skeleton until data is loaded */}
-      {isLoading ||
-      !selectedCategory ||
-      !Array.isArray(duasByCategory[selectedCategory]) ? (
-        // Always show skeleton during loading or if data isn't ready
+      {isLoading || !selectedCategory ? (
         <div>
           <DuaDetailsCardSkeleton />
           <DuaDetailsCardSkeleton />
         </div>
+      ) : !selectedCategory ||
+        !Array.isArray(duasByCategory[selectedCategory]) ||
+        duasByCategory[selectedCategory].length === 0 ? (
+        <div className="w-full h-[78vh] flex justify-center items-center">
+          <p className="text-center text-gray-500 text-lg font-semibold border p-4 rounded-xl bg-gray-50">
+            {language === "english"
+              ? "There is no dua data available in this category right now. Please select a different category to view other Duas of your preferences."
+              : "এই বিভাগে বর্তমানে কোনো দোয়ার তথ্য নেই। আপনার পছন্দের অন্যান্য দোয়া দেখতে ভিন্ন বিভাগ নির্বাচন করুন।"}
+          </p>
+        </div>
       ) : (
-        // Render the duas once data is ready
         duasByCategory[selectedCategory].map((dua, index) => (
           <DuaDetailsCard
             key={index}
