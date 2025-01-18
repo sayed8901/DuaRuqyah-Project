@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+
 import duacard_icon from "@/assets/duacard.svg";
 import copy_icon from "@/assets/copy.svg";
 import bookmark_icon from "@/assets/bookmark.svg";
@@ -15,6 +16,7 @@ import { useAppContext } from "@/contexts/ContextProvider";
 export default function DuaDetailsCard({ dua, duaRef }) {
   const { language } = useAppContext();
 
+  // for showing toast messages while icon clicked
   const handleIconClick = () => {
     // To change message based on language
     const successMessage =
@@ -22,13 +24,15 @@ export default function DuaDetailsCard({ dua, duaRef }) {
         ? "Coming Soon In Sha Allah"
         : "ইনশাআল্লাহ শীঘ্রই আসবে";
 
+    // to modify the toast position and background color
     toast.success(successMessage, {
       position: "bottom-center",
       className: "bg-black", // Tailwind class
     });
   };
 
-  const tooltipTexts = ["Copy", "Bookmark", "Memorize", "Share", "Report"]; // Tooltip labels
+  // Tooltip labels array for using them via loop through later on
+  const tooltipTexts = ["Copy", "Bookmark", "Memorize", "Share", "Report"];
 
   return (
     <div ref={duaRef} className="p-6 bg-white rounded-lg mb-6">
@@ -80,7 +84,7 @@ export default function DuaDetailsCard({ dua, duaRef }) {
           </p>
         </div>
 
-        {/* icons part */}
+        {/* icons and playback part */}
         <div
           className={`flex flex-col sm:flex-row ${
             dua?.audio ? "justify-between" : "justify-end"
@@ -96,8 +100,8 @@ export default function DuaDetailsCard({ dua, duaRef }) {
 
             <AudioPlayer
               // audioSrc={dua.audio}
-              // As {dua.audio} is not available, I have used demo audio here
-
+              
+              // As {dua.audio} is not available now, I have used demo audio here
               audioSrc={`https://www.soundhelix.com/examples/mp3/SoundHelix-Song-${dua.id}.mp3`}
             />
           </div>

@@ -1,24 +1,34 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+
 import audiobtn_icon from "@/assets/audiobtn.svg";
 import pause_icon from "@/assets/pause.svg";
 import repeat_icon from "@/assets/repeat_suffle.svg";
 
+// to show the playback time in minutes:seconds format like 5:30
 const formatTime = (timeInSeconds) => {
   const minutes = Math.floor(timeInSeconds / 60);
   const seconds = Math.floor(timeInSeconds % 60);
-  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+  // to show playback time in minutes:seconds format like 7.05
+  return (
+    `${minutes}:` + // Add the minutes and a colon
+    `${seconds < 10 ? "0" : ""}` + // Add a leading "0" if seconds are less than 10
+    `${seconds}` // Add the seconds
+  );
 };
 
 const AudioPlayer = ({ audioSrc }) => {
   const audioRef = useRef(null);
   const progressBarRef = useRef(null); // Reference to the progress bar
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isDragging, setIsDragging] = useState(false); // State to track dragging
   const [isRepeat, setIsRepeat] = useState(false); // State for repeat mode
 
+  // to handle play and pause status changes
   const handleAudioToggle = () => {
     if (audioRef.current) {
       if (isPlaying) {
@@ -32,6 +42,7 @@ const AudioPlayer = ({ audioSrc }) => {
     }
   };
 
+  // to manage playback repeat functionality
   const handleRepeatToggle = () => {
     setIsRepeat(!isRepeat);
     if (audioRef.current) {
@@ -39,6 +50,7 @@ const AudioPlayer = ({ audioSrc }) => {
     }
   };
 
+  // when repeat is off, stops playback
   const handleAudioEnd = () => {
     if (!isRepeat) {
       setIsPlaying(false); // Stop the playback when repeat is off
@@ -46,18 +58,21 @@ const AudioPlayer = ({ audioSrc }) => {
     }
   };
 
+  // update current time while dragging
   const handleTimeUpdate = () => {
     if (audioRef.current && !isDragging) {
       setCurrentTime(audioRef.current.currentTime);
     }
   };
 
+  // to set playback duration
   const handleLoadedMetadata = () => {
     if (audioRef.current) {
       setDuration(audioRef.current.duration);
     }
   };
 
+  // to calculate playback time from the progress bar position
   const calculateTimeFromPosition = (x) => {
     if (progressBarRef.current) {
       const progressWidth = progressBarRef.current.offsetWidth;
@@ -71,10 +86,12 @@ const AudioPlayer = ({ audioSrc }) => {
     return 0;
   };
 
+  // to handle drag start events
   const handleDragStart = (e) => {
     setIsDragging(true);
   };
 
+  // to handle drag move events
   const handleDragMove = (e) => {
     if (isDragging && progressBarRef.current) {
       const rect = progressBarRef.current.getBoundingClientRect();
@@ -138,7 +155,7 @@ const AudioPlayer = ({ audioSrc }) => {
                 }
               }}
             >
-              {/* Filled Progress */}
+              {/* Filled Progress line */}
               <div
                 className="h-2 bg-primary rounded"
                 style={{

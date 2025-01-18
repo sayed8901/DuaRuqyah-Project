@@ -2,6 +2,7 @@ import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
+// it resembles the skeleton of a dua card
 export default function DuaDetailsCardSkeleton() {
   return (
     <div className="p-6 bg-white rounded-lg mb-6 w-full">

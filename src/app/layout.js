@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter, Roboto } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 
+// custom font
 const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "500", "700", "900"],

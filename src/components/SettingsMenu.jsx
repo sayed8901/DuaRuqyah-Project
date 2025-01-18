@@ -7,9 +7,11 @@ import font_icon from "@/assets/font.svg";
 import { useAppContext } from "@/contexts/ContextProvider";
 
 const SettingsMenu = () => {
+  // getting contexts from the context provider
   const { isSettingsOpen, toggleSettings, toggleLanguage, language } = useAppContext();
 
   return (
+    // Displaying the "settings" side menu of a fixed width for min-w-80 or, 320px
     <div
       className={`fixed top-0 md:top-[40px] lg:top-[60px] -right-2 min-w-80 bg-white mx-2 p-4 mb-10 rounded-3xl min-h-[73vh] lg:min-h-[80vh] xl:min-h-[82vh] shadow-lg transition-transform duration-300 ${
         isSettingsOpen ? "translate-x-0" : "translate-x-full"

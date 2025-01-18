@@ -21,12 +21,13 @@ const CategoryList = ({
   selectedDua,
   handleDuaClick,
 }) => {
+  // getting contexts from the context provider
   const { language } = useAppContext();
 
   // Set loading state to true initially
   const [isLoading, setIsLoading] = useState(true);
 
-  // Simulate fetching data, set isLoading to false once data is loaded
+  // Handling fetching data, & set isLoading to false once data is loaded
   useEffect(() => {
     if (categories && categories.length > 0) {
       setIsLoading(false);
@@ -142,7 +143,11 @@ const CategoryList = ({
                                         src={duaarrow_icon}
                                         alt="duaarrow"
                                       />
-                                      <p>{dua.dua_name_en ? dua.dua_name_en : "Anonymous Dua"}</p>
+                                      <p>
+                                        {dua.dua_name_en
+                                          ? dua.dua_name_en
+                                          : "Anonymous Dua"}
+                                      </p>
                                     </div>
                                   ) : (
                                     <div className="flex items-center gap-2">
@@ -150,7 +155,11 @@ const CategoryList = ({
                                         src={duaarrow_icon}
                                         alt="duaarrow"
                                       />
-                                      <p>{dua.dua_name_bn ? dua.dua_name_bn : "নামবিহীন দোয়া"}</p>
+                                      <p>
+                                        {dua.dua_name_bn
+                                          ? dua.dua_name_bn
+                                          : "নামবিহীন দোয়া"}
+                                      </p>
                                     </div>
                                   )}
                                 </div>

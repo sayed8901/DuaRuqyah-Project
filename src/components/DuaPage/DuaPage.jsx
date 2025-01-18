@@ -7,8 +7,10 @@ export default function DuaPage({ duas, categories }) {
   const [duasList, setDuasList] = useState(duas || []);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
   const duaRefs = useRef({}); // Store refs for each dua card
 
   // Ensure categories are loaded before using them
@@ -27,6 +29,9 @@ export default function DuaPage({ duas, categories }) {
   const fetchDuas = async (categoryId, subCategoryId = null) => {
     setLoading(true);
     setError(null);
+
+    // loads the category data if there is no subCategoryId
+    // otherwise, if there is a sub_category_id, it will load sub_category data
     try {
       const url = subCategoryId
         ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/dua_by_sub_category/${subCategoryId}`

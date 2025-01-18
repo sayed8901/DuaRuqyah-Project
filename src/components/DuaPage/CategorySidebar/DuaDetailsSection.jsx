@@ -10,10 +10,11 @@ export default function DuaDetailsSection({
   duaRefs,
   isLoading,
 }) {
+  // getting contexts from the context provider
   const { language } = useAppContext();
 
   return (
-    <div className="flex-1 ml-2 pl-4 pr-2 rounded-2xl overflow-y-auto h-[81vh] md:h-[77vh] lg:h-[80vh] xl:h-[84vh] 2xl:h-[89vh]">
+    <div className="flex-1 ml-2 pl-4 pr-2 rounded-2xl overflow-y-auto h-[81vh] md:h-[77vh] lg:h-[80vh] xl:h-[84vh] 2xl:h-[89vh] w-full">
       {/* Display section title dynamically for the selected category */}
       {sectionTitle && (
         <div ref={sectionRef} className="p-6 bg-white rounded-lg mb-4">
@@ -35,6 +36,7 @@ export default function DuaDetailsSection({
       ) : !selectedCategory ||
         !Array.isArray(duasByCategory[selectedCategory]) ||
         duasByCategory[selectedCategory].length === 0 ? (
+        // handling empty category
         <div className="w-full h-[78vh] flex justify-center items-center">
           <p className="text-center text-gray-500 text-lg font-semibold border p-4 rounded-xl bg-gray-50">
             {language === "english"
@@ -43,6 +45,7 @@ export default function DuaDetailsSection({
           </p>
         </div>
       ) : (
+        // showing dua cards
         duasByCategory[selectedCategory].map((dua, index) => (
           <DuaDetailsCard
             key={index}

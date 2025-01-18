@@ -11,10 +11,12 @@ export const ContextProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [language, setLanguage] = useState("english"); // Default language is English
 
+  // to toggle settings panel open-close
   const toggleSettings = () => {
     setIsSettingsOpen((prev) => !prev);
   };
 
+  // to toggle category sidebar panel open-close
   const setSidebarOpen = (value) => {
     setIsSidebarOpen(value);
   };
@@ -23,7 +25,6 @@ export const ContextProvider = ({ children }) => {
   const toggleLanguage = (lang) => {
     setLanguage(lang);
   };
-
 
   return (
     <AppContext.Provider

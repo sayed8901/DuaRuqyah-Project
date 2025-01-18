@@ -4,8 +4,11 @@ import DuaPage from "@/components/DuaPage/DuaPage";
 import NavSearchBar from "@/components/NavSearchBar";
 import SettingsMenu from "@/components/SettingsMenu";
 import SideIconMenu from "@/components/SideIconMenu";
-import { getAllCategories, getAllDuas } from "@/utilities/dataFetch";
+
 import { useEffect, useState } from "react";
+
+// getting custom data fetching functions from utility folder
+import { getAllCategories, getAllDuas } from "@/utilities/dataFetch";
 
 export default function Home() {
   const [allDuas, setAllDuas] = useState([]);

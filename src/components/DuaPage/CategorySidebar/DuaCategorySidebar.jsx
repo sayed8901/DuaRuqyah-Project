@@ -16,12 +16,16 @@ export default function DuaCategorySidebar({
 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [duaCounts, setDuaCounts] = useState({});
+
   const [duasByCategory, setDuasByCategory] = useState({});
   const [subCategoriesByCategory, setSubCategoriesByCategory] = useState({});
+
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [expandedSubCategory, setExpandedSubCategory] = useState(null);
+
   const [selectedDua, setSelectedDua] = useState(null);
   const [sectionTitle, setSectionTitle] = useState("");
+
   const duaRefs = useRef({});
   const sectionRef = useRef(null);
 
@@ -34,9 +38,11 @@ export default function DuaCategorySidebar({
   // to track the loading state
   const [isLoading, setIsLoading] = useState(true);
 
+  // to fetch dua data
   useEffect(() => {
     const fetchDuaData = async () => {
       setIsLoading(true);
+
       const counts = {};
       const duasData = {};
       const subCategoriesData = {};
@@ -62,14 +68,17 @@ export default function DuaCategorySidebar({
     fetchDuaData();
   }, [categories]);
 
+  // to handle data loading while category click
   const handleCategoryClick = (categoryId) => {
     if (duaCounts[categoryId] === 0) return; // Prevent clicking if no duas are present
 
+    // to get the category name
     const selectedCategoryName = categories.find(
       (category) => category.id === categoryId
     )?.cat_name_en;
 
     const subCategories = subCategoriesByCategory[categoryId] || [];
+
     const firstSubCategoryName =
       subCategories[0]?.subcat_name_en || selectedCategoryName;
 
@@ -81,6 +90,7 @@ export default function DuaCategorySidebar({
     setSectionTitle(firstSubCategoryName);
     setScrollToSection(true);
 
+    // to scroll to the selected category position
     if (sectionRef.current) {
       setTimeout(() => {
         sectionRef.current.scrollIntoView({
@@ -93,6 +103,7 @@ export default function DuaCategorySidebar({
     }
   };
 
+  // to handle data loading while sub_category click
   const handleSubCategoryClick = (subCategoryId, subCategoryName) => {
     // Update section title and trigger scroll
     setSectionTitle(subCategoryName);
@@ -110,6 +121,7 @@ export default function DuaCategorySidebar({
     );
 
     if (firstDua && duaRefs.current[firstDua.id]) {
+      // to scroll to the selected sub_category position
       // Delay the scroll to Dua to ensure section title is updated
       setTimeout(() => {
         duaRefs.current[firstDua.id].scrollIntoView({
@@ -122,9 +134,12 @@ export default function DuaCategorySidebar({
     }
   };
 
+  // to handle data loading while targeted dua click
   const handleDuaClick = (duaId) => {
     setSelectedDua(duaId);
     const duaElement = duaRefs.current[duaId];
+
+    // to scroll to the selected dua position
     if (duaElement) {
       duaElement.scrollIntoView({ behavior: "smooth", block: "start" });
       const offset = 80;
@@ -132,7 +147,7 @@ export default function DuaCategorySidebar({
     }
   };
 
-  // Toggle Sidebar Visibility
+  // To toggle Sidebar Visibility
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
@@ -141,6 +156,7 @@ export default function DuaCategorySidebar({
     // main part
     <div className="flex">
       {/* Sidebar component that can toggle visibility */}
+      {/* Displaying a "category list" side menu of a fixed width for w-72 to w-96 or, (288px to 384px) */}
       <div
         className={`w-72 lg:w-96 h-full md:h-[73vh] lg:h-[80vh] xl:h-[82vh] bg-white rounded-2xl flex flex-col transition-all ${
           isSidebarOpen
